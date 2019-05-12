@@ -29,7 +29,7 @@ public class FileUtils {
         }
     }
 
-    public static String saveFile(MultipartFile file, String path, String filename) {
+    public static File saveFile(MultipartFile file, String path, String filename) {
         try {
             String dir = basePath;
             if (StringUtils.isNotEmpty(path)) {
@@ -45,7 +45,7 @@ public class FileUtils {
                 dest.createNewFile();
             }
             file.transferTo(dest);
-            return dest.getAbsolutePath();
+            return dest;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
